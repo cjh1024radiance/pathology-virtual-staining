@@ -1,0 +1,73 @@
+{
+  "prepare": {
+    "dataset_dir": "data/private_dataset",
+    "prepared_dir": "outputs/train/prepared_patches",
+    "preview_max_side": 1536,
+    "region_max_side": 768,
+    "export_patch_size": 512,
+    "grid_size": 10,
+    "top_k_per_slide": 16,
+    "min_tissue_ratio": 0.03,
+    "preview_align_search_radius": 32,
+    "preview_align_step": 12,
+    "patch_align_search_radius": 16,
+    "patch_align_step": 4,
+    "patch_expand_ratio": 0.18,
+    "pair_quality_threshold": 0.42,
+    "min_pair_tissue_overlap": 0.08,
+    "min_pair_center_overlap": 0.05,
+    "max_pair_tissue_ratio_gap": 0.42,
+    "min_pair_gray_correlation": 0.02,
+    "overwrite_prepared": true,
+    "max_cases": 0
+  },
+  "dataset": {
+    "patch_size": 256,
+    "random_crop": true,
+    "horizontal_flip": true,
+    "vertical_flip": true,
+    "normalize_to_unit": true,
+    "use_generated_attention_if_missing": true
+  },
+  "model": {
+    "in_channels": 3,
+    "out_channels": 3,
+    "attention_input_channels": 1,
+    "use_attention_conditioned_input": true,
+    "base_channels": 64,
+    "channel_multipliers": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "agent_channels": 4,
+    "attention_dropout": 0.0,
+    "use_residual_gate": true,
+    "clinical_loss_weight": 0.45,
+    "use_he_aux_head": true,
+    "he_aux_weight": 0.2,
+    "focus_reconstruction_weight": 0.75,
+    "background_reconstruction_weight": 0.25,
+    "focus_gamma": 1.25,
+    "output_activation": "sigmoid"
+  },
+  "train": {
+    "learning_rate": 0.0001,
+    "weight_decay": 0.00001,
+    "grad_clip_norm": 1.0
+  },
+  "runtime": {
+    "output_dir": "outputs/train/virtual_stain_resunet",
+    "train_ratio": 0.8,
+    "val_ratio": 0.1,
+    "epochs": 30,
+    "batch_size": 4,
+    "num_workers": 4,
+    "seed": 42,
+    "save_every": 5,
+    "preview_every": 5,
+    "device": "auto",
+    "ablation_mode": "full"
+  }
+}

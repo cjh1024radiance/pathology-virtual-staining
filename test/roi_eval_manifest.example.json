@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "case_id": "24-8964-3",
+      "input_path": "data/private_dataset/<case_id>/<case_id>_unstained.svs",
+      "target_path": "",
+      "roi_boxes": [
+        {
+          "x1": 0.18,
+          "y1": 0.24,
+          "x2": 0.39,
+          "y2": 0.47
+        }
+      ],
+      "lesion_mask_path": ""
+    }
+  ]
+}
